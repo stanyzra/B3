@@ -1,7 +1,18 @@
 <html>
-  <div>
+  <meta charset="utf-8">
+  <body>
+    </body>
+      <style>
+      *{
+        padding: 0;
+        margin: 0;
+      }
+        #menu-centro{
+          background-color: red;
+          padding: 30%;
 
-    <button class="w3-button w3-black w3-right w3-section" type="button"> Oi amigos, tudo certo? 
+        }
+        </style>
 
-  </div>
+    </body>
 </html>
