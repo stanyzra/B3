@@ -101,13 +101,12 @@ body, html {
       <p>Nós somos a 4Dev's, uma equipe desenvolvedora de Softwares para Web e estudantes do 4º ano de Informática do IFPR - Campus Paranavaí. </p>
     </div>
   </div>
+  <br><br><br><br><br><br><br><br>
 
 <!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
-  <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-black w3-wide">Sistema</span>
-
-  </div>
+<div class="w3-content w3-container w3-padding-35" id="portfolio">
+  <br><br>
+      <h1 class="w3-center">Sistema</h1>
 </div>
 
 <div id="menu-centro">
@@ -116,10 +115,6 @@ body, html {
   ?>
 </div>
 
-<!-- Container (Portfolio Section) -->
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-
-</div>
 
 <!-- Modal for full size images on click-->
 <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
