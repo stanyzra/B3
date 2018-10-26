@@ -24,16 +24,22 @@
 <button id="botaoInicio" class="w3-button w3-black w3-half w3-section" type="submit">Comece Aqui</button>
 <a href="#" id="botaoInicio"></a>
 
+<?php
+include("formulario.php");
+ ?>
+
 <script>
 $(document).ready(function() {
 
-  $("#botaoInicio").click(function(){
+  $("#contact").hide();
+
+    $("#botaoInicio").click(function(){
 
       $("#botaoInicio").hide();
 
-        <?php
-          include("formulario.php");
-        ?>
+        $("#contact").fadeIn(function() {
+
+        });
 
 });
 });
