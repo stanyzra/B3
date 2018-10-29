@@ -62,11 +62,6 @@
 <label for=""></label><br>
   <input  class="w3-input w3-border" placeholder="CPF" type="text" tabindex="3" required>
 
-<label for=""></label><br>
-  <input class="w3-input w3-border" placeholder="Categoria" type="text" tabindex="4" required>
-
-<label for=""></label><br>
-  <input class="w3-input w3-border" placeholder="URL da empresa" type="text" tabindex="5" required>
 
 <label for=""></label><br>
 <button id="botao" name="submit" type="submit" class="enviar" data-submit="enviando">Enviar</button>
