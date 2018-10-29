@@ -10,10 +10,10 @@
     <form id="contact" action="" method="post">
       <h3 style="">Cadastro</h3>
       <h4>Nos informe seus dados cadastrais</h4>
-      <div>
-          <h4>Ṕrimeiramente nos diga onde você mora:
-  </h4>
-          <p style="color: DAA520;"class="select">
+      <fieldset>
+      <h4>Primeiramente nos diga onde você mora:</h4>
+
+          <p>
             <select class="budget" v-model="selection.member">
               <option value="PVI">Paranavaí</option>
   						<option value="GRC">Guairaçá</option>
@@ -23,21 +23,24 @@
   						<option value="CSC">Cascavel</option>
               <option value="CL">Campo Largo</option>
   						<option value="7">União da Vitória</option>
-              </div>
-      <fieldset>
-        <input placeholder="Email " type="text" tabindex="1" required autofocus>
+            </select>
+            </fieldset>
+
+
+        <fieldset>
+        <p><input class="campos" placeholder="Email" type="text" tabindex="1" required autofocus></p>
       </fieldset>
       <fieldset>
-        <input type="email" tabindex="2" required>
+        <input class="campos" placeholder="Nome da empresa" type="text" tabindex="2" required>
       </fieldset>
         <fieldset>
-        <input  type="email" tabindex="2" required>
+        <input  class="campos" placeholder="CNPJl" type="text" tabindex="2" required>
       </fieldset>
       <fieldset>
-        <input type="url" tabindex="4" required>
+        <input class="campos" placeholder="Categoria" type="text" tabindex="4" required>
       </fieldset>
       <fieldset>
-        <textarea tabindex="5" required></textarea>
+        <input class="campos" placeholder="URL da empresa" type="text" tabindex="4" required>
       </fieldset>
       <fieldset>
         <button name="submit" type="submit" class="enviar" data-submit="...enviano...">Enviar</button>
