@@ -1,4 +1,3 @@
-
 <style>
 *{
   padding: 0;
@@ -57,5 +56,3 @@
 <button name="submit" type="submit" class="enviar" data-submit="enviando">Enviar</button>
 
 </div>
-
-</body>
