@@ -31,13 +31,13 @@ include("formulario.php");
 <script>
 $(document).ready(function() {
 
-  $("#contact").hide();
+  $("#cadastro").hide();
 
     $("#botaoInicio").click(function(){
 
       $("#botaoInicio").hide();
 
-        $("#contact").fadeIn(function() {
+        $("#cadastro").fadeIn(function() {
 
         });
 

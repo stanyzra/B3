@@ -1914,7 +1914,19 @@ a {
   margin-top: 6px;
   padding: 5px;
 }
-fieldset{
-  border: blue;
-
+#dadosEmpresa{
+  float: left;
+	margin-left: 25%;
+}
+#dadosEmpresario{
+  float: right;
+	margin-right: 25%;
+}
+#botao{
+	padding: 4px;
+	width: 210px;
+}
+.cidade{
+	padding: 9px;
+	width: 210px;
 }
