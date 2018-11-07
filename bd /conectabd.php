@@ -1,17 +1,9 @@
 <?php
 
-$conecta = mysqli_connect('localhost', 'root', '', 'futebol');
+function conectar(){
 
-$sqlinsert = "INSERT INTO campeonato (nomeCamp, dtInicio) VALUES".
-                 "('Libertadores', '2018-05-05')";
+return  mysqli_connect('localhost', 'root', 'mysql', 'agenda');
 
-$resultado = mysqli_query($conecta, $sqlinsert);
-
-if ($resultado) {
-  echo "Campeonato inserido com sucesso!!!";
-
-} else {
-  echo "Deu problema - Verifique onde está o erro!! :((()";
 }
 
  ?>
