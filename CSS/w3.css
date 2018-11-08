@@ -1922,15 +1922,30 @@ a {
   float: right;
 	margin-right: 25%;
 }
-#botao{
+#botaoSalvar{
 	padding: 4px;
 	width: 210px;
+	float: left;
+	margin-left: 39%;
 }
 .cidade{
 	padding: 9px;
 	width: 210px;
 }
 .estado{
+	padding: 9px;
+	width: 210px;
+}
+.estado{
+	padding: 9px;
+	width: 210px;
+}
+.estado{
+	padding: 9px;
+	width: 210px;
+}
+
+.categoria{
 	padding: 9px;
 	width: 210px;
 }

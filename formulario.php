@@ -28,24 +28,29 @@
               <option value="LND">Londrina</option>
   						<option value="CSC">Cascavel</option>
               <option value="CL">Campo Largo</option>
-  						<option value="7">União da Vitória</option>
+  						<option value="UV">União da Vitória</option>
             </select>
 <br>
 
         <label for=""></label><br>
-       <input name="email" class="w3-input w3-border limpar" placeholder="Email" type="email" tabindex="1" required autofocus>
+       <input name="email" class="w3-input w3-border limpar" placeholder="Email da empresa" type="email" tabindex="1" required autofocus>
 
       <label for=""></label><br>
         <input name="nomeEmpresa" class="w3-input w3-border limpar" placeholder="Nome da empresa" type="text" tabindex="2" required>
 
     <label for=""></label><br>
-        <input name="cnpj" class="w3-input w3-border limpar" placeholder="CNPJ" type="text" tabindex="3" required>
+        <input name="cep" class="w3-input w3-border limpar" placeholder="CEP" type="text" tabindex="3" required>
 
-      <label for=""></label><br>
-        <input name="categoria" class="w3-input w3-border limpar" placeholder="Categoria" type="text" tabindex="4" required>
+<br>
 
-      <label for=""></label><br>
-        <input name="url" class="w3-input w3-border limpar" placeholder="URL da empresa" type="text" tabindex="5" required>
+        <select name="categoria" class="categoria" v-model="selection.member">
+          <option value="">Selecione uma categoria</option>
+          <option value="PC">Computador</option>
+          <option value="console">Console</option>
+          <option value="mobile">Mobile</option>
+          <option value="perifericos">Periféricos</option>
+
+        </select>
 
       <label for=""></label><br>
 
@@ -66,15 +71,20 @@
 <label for=""></label><br>
   <input name="nomeEmpresario" class="w3-input w3-border limpar" placeholder="Nome do empresário" type="text" tabindex="7" required>
 
+  <label for=""></label><br>
+    <input name="numCel" class="w3-input w3-border limpar" placeholder="Número de celular" type="text" tabindex="8" required>
+
 <label for=""></label><br>
-  <input name="cpf" class="w3-input w3-border limpar" placeholder="CPF" type="text" tabindex="8" required>
+  <input name="cpf" class="w3-input w3-border limpar" placeholder="CPF" type="text" tabindex="9" required>
 
 
 <label for=""></label><br>
+
+</div>
 <button id="botaoSalvar" name="submit" type="submit" class="w3-button w3-black w3-half w3-section" data-submit="salvando">Salvar</button>
 <a href="#" id="botaoSalvar"></a>
 
-</div>
+
 </form>
 
 <script>
@@ -89,11 +99,11 @@ $(document).ready(function() {
       if (data == "ok") {
         alert("Cadastro realizado com sucesso!");
 
-        $(".limpar").each(function(){
-          $(this).val("");
-        });
+        // $(".limpar").each(function(){
+        //   $(this).val("");
+        // });
       }else{
-        alert("Há algo de errado, corriga os campos.")
+        alert("Há algo de errado. Por favor, corriga os campos.")
       }
     }); //fim do post
 
