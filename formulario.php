@@ -45,11 +45,11 @@
 
         <select name="categoria" class="categoria" v-model="selection.member">
           <option value="">Selecione uma categoria</option>
+   seklect categoria bd
           <option value="PC">Computador</option>
           <option value="console">Console</option>
           <option value="mobile">Mobile</option>
           <option value="perifericos">Periféricos</option>
-
         </select>
 
       <label for=""></label><br>
