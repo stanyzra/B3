@@ -31,8 +31,8 @@ if($conexao === false){
       $insertPessoa = "INSERT INTO pessoa (email, nome, numCel, cpf)
       VALUES ('$emailEmpresario', '$nomeEmpresario', '$numCel', '$cpf')";
 
-      $insertCategoria = "INSERT INTO categoria (tipo)
-      VALUES ('$categoria')";
+      // $insertCategoria = "INSERT INTO categoria (tipo)
+      // VALUES ('$categoria')";
 
       if ($cidade == "" || $estado == "" || $categoria == "") {
 
@@ -41,18 +41,21 @@ if($conexao === false){
       }else {
 
 
-        mysqli_query($conexao, $insertCategoria);
+        // mysqli_query($conexao, $insertCategoria);
+
+        mysqli_query($conexao, $insertPessoa);
+
+        // retornar id inserido
+        $id_pessoa = mysqli_insert_id($conexao);
 
 
-
-        $insertEmpresa = "INSERT INTO empresa (nome, CEP, cidade, estado, emailEmpresa, id_categoria)
-        VALUES ('$nomeEmpresa', '$cep', '$cidade', '$estado', '$emailEmpresa', '')";
+        $insertEmpresa = "INSERT INTO empresa (nome, CEP, cidade, estado, emailEmpresa, id_categoria, id_pessoa)
+        VALUES ('$nomeEmpresa', '$cep', '$cidade', '$estado', '$emailEmpresa', $categoria, $id_pessoa)";
 
         mysqli_query($conexao, $insertEmpresa);
 
         //echo $insertEmpresa."<br>";
 
-        mysqli_query($conexao, $insertPessoa);
 
         //echo $insertPessoa."<br>";
 

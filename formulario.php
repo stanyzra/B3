@@ -1,3 +1,24 @@
+<?php
+// conecta no banco
+
+$conexao = new mysqli("localhost", "root", "mysql", "agenda"); //conectando com o bd
+
+if($conexao === false){
+
+    die("ERROR: não foi possível conectar o bando de dados:  " . $conexao->connect_error);
+
+}
+
+// faz um select na categoria
+
+$sql = "SELECT id_categoria, tipo FROM categoria";
+
+// armazena em uma lista
+
+$IDcategoria = $conexao->query($sql);
+
+ ?>
+
 <style>
 *{
   padding: 0;
@@ -7,6 +28,7 @@
 #textoCentral{
   text-align: center;
 }
+
 </style>
 <body>
 
@@ -44,12 +66,22 @@
 <br>
 
         <select name="categoria" class="categoria" v-model="selection.member">
-          <option value="">Selecione uma categoria</option>
-   seklect categoria bd
-          <option value="PC">Computador</option>
-          <option value="console">Console</option>
-          <option value="mobile">Mobile</option>
-          <option value="perifericos">Periféricos</option>
+
+          <?php
+          // for pra listar as opcoes/categorias
+          if ($IDcategoria->num_rows > 0) {
+
+            echo '<option value="">Selecione uma categoria</option>';
+
+              while($cat = $IDcategoria->fetch_assoc()) {
+                  echo "<option value=\"{$cat['id']}\">{$cat['tipo']}</option>";
+              }
+          } else {
+              echo '<option value="">Nenhuma categoria cadastrada</option>';
+          }
+          $conn->close();
+           ?>
+
         </select>
 
       <label for=""></label><br>
