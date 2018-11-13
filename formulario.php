@@ -11,11 +11,12 @@ if($conexao === false){
 
 // faz um select na categoria
 
-$sql = "SELECT id_categoria, tipo FROM categoria";
-
+$sqlCat = "SELECT id_categoria, tipo FROM categoria";
+$sqlEvento = "SELECT id_evento, nome, dataEvento FROM evento";
 // armazena em uma lista
 
-$IDcategoria = $conexao->query($sql);
+$idCategoria = $conexao->query($sqlCat);
+$idEvento = $conexao->query($sqlEvento);
 
  ?>
 
@@ -33,11 +34,11 @@ $IDcategoria = $conexao->query($sql);
 <body>
 
   <div class="container">
-    <form id="formCadastro" action="" method="post">
+    <form id="formCadastroPessoais" action="" method="post">
 <div id="textoCentral">
 
       <h3 style="">Cadastro</h3>
-      <h4>Nos informe seus dados cadastrais</h4>
+      <h4>Nos informe seus dados</h4>
 
 </div>
 <div id="dadosEmpresa">
@@ -54,27 +55,30 @@ $IDcategoria = $conexao->query($sql);
             </select>
 <br>
 
-        <label for=""></label><br>
-       <input name="email" class="w3-input w3-border limpar" placeholder="Email da empresa" type="email" tabindex="1" required autofocus>
+      <label for=""></label><br>
+        <input name="email" class="w3-input w3-border limpar" placeholder="Email da empresa" type="email" tabindex="1" required autofocus>
 
       <label for=""></label><br>
         <input name="nomeEmpresa" class="w3-input w3-border limpar" placeholder="Nome da empresa" type="text" tabindex="2" required>
 
-    <label for=""></label><br>
+      <label for=""></label><br>
         <input name="cep" class="w3-input w3-border limpar" placeholder="CEP" type="text" tabindex="3" required>
 
+      <label for=""></label><br>
+        <input name="apresentacao" class="w3-input w3-border limpar" placeholder="Nome da apresentação" type="text" tabindex="4" required>
 <br>
 
         <select name="categoria" class="categoria" v-model="selection.member">
 
           <?php
           // for pra listar as opcoes/categorias
-          if ($IDcategoria->num_rows > 0) {
+          if ($idCategoria->num_rows > 0) {
 
             echo '<option value="">Selecione uma categoria</option>';
 
-              while($cat = $IDcategoria->fetch_assoc()) {
-                  echo "<option value=\"{$cat['id']}\">{$cat['tipo']}</option>";
+              while($cat = $idCategoria->fetch_assoc()) {
+                  echo "<option value=\"{$cat['id_categoria']}\">{$cat['tipo']}</option>";
+
               }
           } else {
               echo '<option value="">Nenhuma categoria cadastrada</option>';
@@ -108,8 +112,26 @@ $IDcategoria = $conexao->query($sql);
 
 <label for=""></label><br>
   <input name="cpf" class="w3-input w3-border limpar" placeholder="CPF" type="text" tabindex="9" required>
+<br>
+  <select name="evento" class="evento" v-model="selection.member">
 
+    <?php
+    // for pra listar as opcoes/eventos
+    if ($idEvento->num_rows > 0) {
 
+      echo '<option value="">Selecione o evento</option>';
+
+        while($eve = $idEvento->fetch_assoc()) {
+            echo "<option value=\"{$eve['id_evento']}\">{$eve['dataEvento']} - {$eve['nome']}</option>";
+
+        }
+    } else {
+        echo '<option value="">Nenhum evento cadastrado</option>';
+    }
+    $conexao->close();
+     ?>
+
+  </select>
 <label for=""></label><br>
 
 </div>
@@ -122,11 +144,11 @@ $IDcategoria = $conexao->query($sql);
 <script>
 $(document).ready(function() {
 
-  $("#formCadastro").submit(function(event){
+  $("#formCadastroPessoais").submit(function(event){
 
     event.preventDefault();
 
-    $.post("ajax/cadastrar.php", $("#formCadastro").serialize(), function(data){
+    $.post("ajax/cadastrar.php", $("#formCadastroPessoais").serialize(), function(data){
 
       if (data == "ok") {
         alert("Cadastro realizado com sucesso!");
@@ -138,6 +160,7 @@ $(document).ready(function() {
         alert("Há algo de errado. Por favor, corriga os campos.")
       }
     }); //fim do post
+
 
 });
 });

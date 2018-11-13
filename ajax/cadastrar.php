@@ -19,6 +19,12 @@ $nomeEmpresario = $_POST["nomeEmpresario"];
 $numCel = $_POST["numCel"];
 $cpf = $_POST["cpf"];
 
+//dados informados (evento)
+$evento = $_POST["evento"];
+
+//dados informados (inscricao)
+$nomeApresentacao = $_POST["apresentacao"];
+
 if($conexao === false){
 
     die("ERROR: não foi possível conectar o bando de dados:  " . $conexao->connect_error);
@@ -27,40 +33,37 @@ if($conexao === false){
 
   try {
 
+    //inserindo dados da pessoa
+    $insertPessoa = "INSERT INTO pessoa (email, nome, numCel, cpf)
+    VALUES ('$emailEmpresario', '$nomeEmpresario', '$numCel', '$cpf')";
 
-      $insertPessoa = "INSERT INTO pessoa (email, nome, numCel, cpf)
-      VALUES ('$emailEmpresario', '$nomeEmpresario', '$numCel', '$cpf')";
-
-      // $insertCategoria = "INSERT INTO categoria (tipo)
-      // VALUES ('$categoria')";
-
-      if ($cidade == "" || $estado == "" || $categoria == "") {
+      if ($cidade == "" || $estado == "" || $categoria == "" || $evento == "") {
 
         echo "Erro: informar os dados corretamente.";
 
       }else {
-
-
-        // mysqli_query($conexao, $insertCategoria);
 
         mysqli_query($conexao, $insertPessoa);
 
         // retornar id inserido
         $id_pessoa = mysqli_insert_id($conexao);
 
-
+        //inserindo dados da empresa
         $insertEmpresa = "INSERT INTO empresa (nome, CEP, cidade, estado, emailEmpresa, id_categoria, id_pessoa)
         VALUES ('$nomeEmpresa', '$cep', '$cidade', '$estado', '$emailEmpresa', $categoria, $id_pessoa)";
 
         mysqli_query($conexao, $insertEmpresa);
 
-        //echo $insertEmpresa."<br>";
+        // retornar id inserido
+        $id_empresa = mysqli_insert_id($conexao);
 
+        $id_evento = $_POST["evento"];
 
-        //echo $insertPessoa."<br>";
+        //inserindo dados da inscricao
+        $insertInscricao = "INSERT INTO inscricao (id_evento, id_empresa, nomeApresentacao)
+        VALUES ('$id_evento', '$id_empresa', '$nomeApresentacao')";
 
-        //echo $insertCategoria."<br>";
-
+        mysqli_query($conexao, $insertInscricao);
 
         echo "ok";
       }
