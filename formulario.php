@@ -79,7 +79,7 @@ $IDcategoria = $conexao->query($sql);
           } else {
               echo '<option value="">Nenhuma categoria cadastrada</option>';
           }
-          $conn->close();
+          $conexao->close();
            ?>
 
         </select>
