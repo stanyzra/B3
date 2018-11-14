@@ -8,10 +8,14 @@
   padding: 0;
 }
 #botaoInicio{
-
   margin-top: 200px;
+  margin-bottom: 50px;
+  margin-left: 250px ;
+}
+#botaoMenu{
   margin-bottom: 16px;
   margin-left: 250px ;
+  margin-bottom: 200px;
 
 }
 #formCadastro{
@@ -24,6 +28,9 @@
 <button id="botaoInicio" class="w3-button w3-black w3-half w3-section" type="submit">Comece Aqui</button>
 <a href="#" id="botaoInicio"></a>
 
+<button id="botaoMenu" class="w3-button w3-black w3-half w3-section" type="submit">Caso já tenha cadastrado algo</button>
+<a href="#" id="botaoMenu"></a>
+
 <?php
 include("formulario.php");
  ?>
@@ -33,14 +40,16 @@ $(document).ready(function() {
 
   $("#formCadastroPessoais").hide();
 
-    $("#botaoInicio").click(function(){
+  $("#botaoInicio").click(function(){
+    $("#botaoInicio").hide();
+    $("#botaoMenu").hide();
+    $("#formCadastroPessoais").fadeIn();
+  });
 
-      $("#botaoInicio").hide();
-
-        $("#formCadastroPessoais").fadeIn(function() {
-
-        });
-
-});
+  $("#botaoMenu").click(function(){
+    $("#botaoMenu").hide();
+    $("#botaoInicio").hide();
+    $("#dadosCadastrados").fadeIn();
+  });
 });
 </script>

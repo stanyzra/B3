@@ -280,6 +280,10 @@ ALTER TABLE `pessoa`
 ALTER TABLE `agenda`
   ADD CONSTRAINT `evento_agenda_fk` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+ALTER TABLE `inscricao`
+  ADD CONSTRAINT `empresa_inscricao_fk` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_empresa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `evento_inscricao_fk` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 --
 -- Restrições para tabelas `empresa`
 --

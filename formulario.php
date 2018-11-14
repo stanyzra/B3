@@ -1,6 +1,42 @@
 <?php
 // conecta no banco
 
+// <tbody>
+// <tr>
+//     <!-- Criando colunas de título -->
+//       <th>Nome</th>
+//     <th>Email</th>
+//     <th>Fone</th>
+// </tr>
+//     <tr>
+//         <!-- Colunas de conteúdo -->
+//         <td>Rafael Zottesso</td>
+//         <td>rafael.zottesso@ifpr.edu.br</td>
+//         <td>(44) 99999-9999</td>
+//     </tr>
+//
+//     <tr>
+//         <!-- Colunas de conteúdo -->
+//         <td>Fulano de Tal</td>
+//         <td>fulano@ifpr.edu.br</td>
+//         <td>(44) 99999-8888</td>
+//     </tr>
+//
+//     <tr>
+//         <!-- Colunas de conteúdo -->
+//         <td>Beltrano de tal</td>
+//         <td>beltrano@ifpr.edu.br</td>
+//         <td>(44) 99999-5555</td>
+//     </tr>
+//
+//     <tr>
+//         <!-- Colunas de conteúdo -->
+//         <td>Ciclano de Tal</td>
+//         <td>ciclano@ifpr.edu.br</td>
+//         <td>(44) 99999-1234</td>
+//     </tr>
+// </tbody>
+
 $conexao = new mysqli("localhost", "root", "mysql", "agenda"); //conectando com o bd
 
 if($conexao === false){
@@ -141,26 +177,37 @@ $idEvento = $conexao->query($sqlEvento);
 
 </form>
 
+<?php
+include("menu_principal.php");
+ ?>
+
 <script>
 $(document).ready(function() {
 
-  $("#formCadastroPessoais").submit(function(event){
+  $("#dadosCadastrados").hide();
 
-    event.preventDefault();
+    $("#formCadastroPessoais").submit(function(event){
 
-    $.post("ajax/cadastrar.php", $("#formCadastroPessoais").serialize(), function(data){
+      event.preventDefault();
 
-      if (data == "ok") {
-        alert("Cadastro realizado com sucesso!");
+      $.post("ajax/cadastrar.php", $("#formCadastroPessoais").serialize(), function(data){
+
+        if (data == "ok") {
+          alert("Cadastro realizado com sucesso!");
 
         // $(".limpar").each(function(){
         //   $(this).val("");
         // });
-      }else{
-        alert("Há algo de errado. Por favor, corriga os campos.")
-      }
-    }); //fim do post
+        }else{
+          alert("Há algo de errado. Por favor, corriga os campos.")
+        }
+      }); //fim do post
 
+      $("#formCadastroPessoais").hide();
+
+        $("#dadosCadastrados").fadeIn(function() {
+
+        });
 
 });
 });

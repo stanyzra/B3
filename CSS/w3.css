@@ -1928,6 +1928,16 @@ a {
 	float: left;
 	margin-left: 39%;
 }
+#dadosCadastrados{
+	padding: 4px;
+	width: auto;
+	float: left;
+	margin-left: 25%;
+}
+.menuPrincipal{
+	padding: 9px;
+
+}
 .cidade{
 	padding: 9px;
 	width: 210px;
