@@ -7,7 +7,7 @@ if($conexao === false){
 
     die("ERROR: não foi possível conectar o bando de dados:  " . $conexao->connect_error);
 
-}
+  }
 
 // faz um select na categoria
 

@@ -1911,15 +1911,15 @@ a {
 	border-color: #e7ffff!important
 }
 .campos{
-  margin-top: 6px;
-  padding: 5px;
+	margin-top: 6px;
+	padding: 5px;
 }
 #dadosEmpresa{
-  float: left;
+	float: left;
 	margin-left: 25%;
 }
 #dadosEmpresario{
-  float: right;
+	float: right;
 	margin-right: 25%;
 }
 #botaoSalvar{
@@ -1936,13 +1936,13 @@ a {
 	margin-left: auto;
 }
 #dadosCadastrados {
-    border-collapse: collapse;
-    width: 100%;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 th, td {
-    text-align: left;
-    padding: 8px;
+	text-align: left;
+	padding: 8px;
 }
 
 tr:nth-child(even) {background-color: #f2f2f2;

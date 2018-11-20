@@ -5,7 +5,7 @@ $conexao = new mysqli("localhost", "root", "mysql", "agenda"); //conectando com 
 
 if($conexao === false){
 
-    die("ERROR: não foi possível conectar o bando de dados:  " . $conexao->connect_error);
+  die("ERROR: não foi possível conectar o bando de dados:  " . $conexao->connect_error);
 
 }
 
@@ -18,7 +18,7 @@ $sqlEvento = "SELECT id_evento, nome, dataEvento FROM evento";
 $idCategoria = $conexao->query($sqlCat);
 $idEvento = $conexao->query($sqlEvento);
 
- ?>
+?>
 
 <style>
 *{
@@ -35,38 +35,38 @@ $idEvento = $conexao->query($sqlEvento);
 
   <div class="container">
     <form id="formCadastroPessoais" action="" method="post">
-<div id="textoCentral">
+      <div id="textoCentral">
+        
+        <h3 style="">Cadastro</h3>
+        <h4>Nos informe seus dados</h4>
 
-      <h3 style="">Cadastro</h3>
-      <h4>Nos informe seus dados</h4>
+      </div>
+      <div id="dadosEmpresa">
+        <select name="cidade" class="cidade" v-model="selection.member">
+          <option value="">Selecione uma cidade</option>
+          <option value="PVI">Paranavaí</option>
+          <option value="GRC">Guairaçá</option>
+          <option value="MGA">Maringá</option>
+          <option value="CTB">Curitiba</option>
+          <option value="LND">Londrina</option>
+          <option value="CSC">Cascavel</option>
+          <option value="CL">Campo Largo</option>
+          <option value="UV">União da Vitória</option>
+        </select>
+        <br>
 
-</div>
-<div id="dadosEmpresa">
-            <select name="cidade" class="cidade" v-model="selection.member">
-              <option value="">Selecione uma cidade</option>
-              <option value="PVI">Paranavaí</option>
-  						<option value="GRC">Guairaçá</option>
-              <option value="MGA">Maringá</option>
-  						<option value="CTB">Curitiba</option>
-              <option value="LND">Londrina</option>
-  						<option value="CSC">Cascavel</option>
-              <option value="CL">Campo Largo</option>
-  						<option value="UV">União da Vitória</option>
-            </select>
-<br>
-
-      <label for=""></label><br>
+        <label for=""></label><br>
         <input name="email" class="w3-input w3-border limpar" placeholder="Email da empresa" type="email" tabindex="1" required autofocus>
 
-      <label for=""></label><br>
+        <label for=""></label><br>
         <input name="nomeEmpresa" class="w3-input w3-border limpar" placeholder="Nome da empresa" type="text" tabindex="2" required>
 
-      <label for=""></label><br>
+        <label for=""></label><br>
         <input name="cep" class="w3-input w3-border limpar" placeholder="CEP" type="text" tabindex="3" required>
 
-      <label for=""></label><br>
+        <label for=""></label><br>
         <input name="apresentacao" class="w3-input w3-border limpar" placeholder="Nome da apresentação" type="text" tabindex="4" required>
-<br>
+        <br>
 
         <select name="categoria" class="categoria" v-model="selection.member">
 
@@ -76,99 +76,99 @@ $idEvento = $conexao->query($sqlEvento);
 
             echo '<option value="">Selecione uma categoria</option>';
 
-              while($cat = $idCategoria->fetch_assoc()) {
-                  echo "<option value=\"{$cat['id_categoria']}\">{$cat['tipo']}</option>";
+            while($cat = $idCategoria->fetch_assoc()) {
+              echo "<option value=\"{$cat['id_categoria']}\">{$cat['tipo']}</option>";
 
-              }
+            }
           } else {
-              echo '<option value="">Nenhuma categoria cadastrada</option>';
+            echo '<option value="">Nenhuma categoria cadastrada</option>';
           }
           $conexao->close();
-           ?>
+          ?>
 
         </select>
 
-      <label for=""></label><br>
+        <label for=""></label><br>
 
-</div>
+      </div>
 
-<div id="dadosEmpresario">
+      <div id="dadosEmpresario">
 
-      <select name="estado" class="estado" v-model="selection.member">
-        <option value="">Selecione um estado</option>
-        <option value="PR">PR</option>
-        <option value="SP">SP</option>
-        <option value="MG">MG</option>
-      </select>
-<br>
-  <label for=""></label><br>
- <input name="emailEmpresario" class="w3-input w3-border limpar" placeholder="Email do empresário" type="email" tabindex="6" required autofocus>
+        <select name="estado" class="estado" v-model="selection.member">
+          <option value="">Selecione um estado</option>
+          <option value="PR">PR</option>
+          <option value="SP">SP</option>
+          <option value="MG">MG</option>
+        </select>
+        <br>
+        <label for=""></label><br>
+        <input name="emailEmpresario" class="w3-input w3-border limpar" placeholder="Email do empresário" type="email" tabindex="6" required autofocus>
 
-<label for=""></label><br>
-  <input name="nomeEmpresario" class="w3-input w3-border limpar" placeholder="Nome do empresário" type="text" tabindex="7" required>
+        <label for=""></label><br>
+        <input name="nomeEmpresario" class="w3-input w3-border limpar" placeholder="Nome do empresário" type="text" tabindex="7" required>
 
-  <label for=""></label><br>
-    <input name="numCel" class="w3-input w3-border limpar" placeholder="Número de celular" type="text" tabindex="8" required>
+        <label for=""></label><br>
+        <input name="numCel" class="w3-input w3-border limpar" placeholder="Número de celular" type="text" tabindex="8" required>
 
-<label for=""></label><br>
-  <input name="cpf" class="w3-input w3-border limpar" placeholder="CPF" type="text" tabindex="9" required>
-<br>
-  <select name="evento" class="evento" v-model="selection.member">
+        <label for=""></label><br>
+        <input name="cpf" class="w3-input w3-border limpar" placeholder="CPF" type="text" tabindex="9" required>
+        <br>
+        <select name="evento" class="evento" v-model="selection.member">
 
-    <?php
-    // for pra listar as opcoes/eventos
-    if ($idEvento->num_rows > 0) {
+          <?php
+          // for pra listar as opcoes/eventos
+          if ($idEvento->num_rows > 0) {
 
-      echo '<option value="">Selecione o evento</option>';
+            echo '<option value="">Selecione o evento</option>';
 
-        while($eve = $idEvento->fetch_assoc()) {
-            echo "<option value=\"{$eve['id_evento']}\">{$eve['dataEvento']} - {$eve['nome']}</option>";
+            while($eve = $idEvento->fetch_assoc()) {
+              echo "<option value=\"{$eve['id_evento']}\">{$eve['dataEvento']} - {$eve['nome']}</option>";
 
-        }
-    } else {
-        echo '<option value="">Nenhum evento cadastrado</option>';
-    }
-    $conexao->close();
-     ?>
+            }
+          } else {
+            echo '<option value="">Nenhum evento cadastrado</option>';
+          }
+          $conexao->close();
+          ?>
 
-  </select>
-<label for=""></label><br>
+        </select>
+        <label for=""></label><br>
 
-</div>
-<button id="botaoSalvar" name="submit" type="submit" class="w3-button w3-black w3-half w3-section" data-submit="salvando">Salvar</button>
-<a href="#" id="botaoSalvar"></a>
+      </div>
+      <button id="botaoSalvar" name="submit" type="submit" class="w3-button w3-black w3-half w3-section" data-submit="salvando">Salvar</button>
+      <a href="#" id="botaoSalvar"></a>
 
 
-</form>
+    </form>
 
-<script>
-$(document).ready(function() {
+    <script>
+    $(document).ready(function() {
 
-  $("#dadosCadastrados").hide();
+      $("#dadosCadastrados").hide();
 
-    $("#formCadastroPessoais").submit(function(event){
+      $("#formCadastroPessoais").submit(function(event){
 
-      event.preventDefault();
+        event.preventDefault();
 
-      $.post("ajax/cadastrar.php", $("#formCadastroPessoais").serialize(), function(data){
+        $.post("ajax/cadastrar.php", $("#formCadastroPessoais").serialize(), function(data){
 
-        if (data == "ok") {
-          alert("Cadastro realizado com sucesso!");
+          if (data == "ok") {
+            alert("Cadastro realizado com sucesso!");
 
-         $(".limpar").each(function(){
-           $(this).val("");
-         });
-        }else{
-          alert("Há algo de errado. Por favor, corriga os campos.")
-        }
-      }); //fim do post
+            $(".limpar").each(function(){
+              $(this).val("");
+            });
+          }else{
+            alert("Há algo de errado. Por favor, corriga os campos.")
+          }
+        }); //fim do post
 
-      $("#formCadastroPessoais").hide();
+        $("#formCadastroPessoais").hide();
 
         $("#dadosCadastrados").fadeIn(function() {
 
         });
 
-});
-});
-</script>
+      });
+    });
+  </script>

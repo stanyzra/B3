@@ -34,16 +34,16 @@
 
 <?php
 include("formulario.php");
- ?>
+?>
 
- <button id="botaoCadastrar" class="w3-button w3-blue w3-section" type="submit">Novo cadastro</button>
- <a href="#" id="botaoCadastrar"></a>
+<button id="botaoCadastrar" class="w3-button w3-blue w3-section" type="submit">Novo cadastro</button>
+<a href="#" id="botaoCadastrar"></a>
 
- <button id="botaoExcluir" class="w3-button w3-red w3-section" type="submit">Excluir cadastro</button>
- <a href="#" id="botaoExcluir"></a>
+<button id="botaoExcluir" class="w3-button w3-red w3-section" type="submit">Excluir cadastro</button>
+<a href="#" id="botaoExcluir"></a>
 
- <button id="botaoAtualizar" class="w3-button w3-black w3-section" type="submit">Atualizar lista</button>
- <a href="#" id="botaoAtualizar"></a>
+<button id="botaoAtualizar" class="w3-button w3-black w3-section" type="submit">Atualizar lista</button>
+<a href="#" id="botaoAtualizar"></a>
 <div id="tabelaDados">
 
 </div>

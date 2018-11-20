@@ -27,7 +27,7 @@ $nomeApresentacao = $_POST["apresentacao"];
 
 if($conexao === false){
 
-    die("ERROR: não foi possível conectar o bando de dados:  " . $conexao->connect_error);
+  die("ERROR: não foi possível conectar o bando de dados:  " . $conexao->connect_error);
 
 }else{
 
@@ -37,46 +37,46 @@ if($conexao === false){
     $insertPessoa = "INSERT INTO pessoa (email, nome, numCel, cpf)
     VALUES ('$emailEmpresario', '$nomeEmpresario', '$numCel', '$cpf')";
 
-      if ($cidade == "" || $estado == "" || $categoria == "" || $evento == "") {
+    if ($cidade == "" || $estado == "" || $categoria == "" || $evento == "") {
 
-        echo "Erro: informar os dados corretamente.";
+      echo "Erro: informar os dados corretamente.";
 
-      }else {
+    }else {
 
-        mysqli_query($conexao, $insertPessoa);
+      mysqli_query($conexao, $insertPessoa);
 
-        // retornar id inserido
-        $id_pessoa = mysqli_insert_id($conexao);
+      // retornar id inserido
+      $id_pessoa = mysqli_insert_id($conexao);
 
-        //inserindo dados da empresa
-        $insertEmpresa = "INSERT INTO empresa (nome, CEP, cidade, estado, emailEmpresa, id_categoria, id_pessoa)
-        VALUES ('$nomeEmpresa', '$cep', '$cidade', '$estado', '$emailEmpresa', $categoria, $id_pessoa)";
+      //inserindo dados da empresa
+      $insertEmpresa = "INSERT INTO empresa (nome, CEP, cidade, estado, emailEmpresa, id_categoria, id_pessoa)
+      VALUES ('$nomeEmpresa', '$cep', '$cidade', '$estado', '$emailEmpresa', $categoria, $id_pessoa)";
 
-        mysqli_query($conexao, $insertEmpresa);
+      mysqli_query($conexao, $insertEmpresa);
 
-        // retornar id inserido
-        $id_empresa = mysqli_insert_id($conexao);
+      // retornar id inserido
+      $id_empresa = mysqli_insert_id($conexao);
 
-        $id_evento = $_POST["evento"];
+      $id_evento = $_POST["evento"];
 
-        //inserindo dados da inscricao
-        $insertInscricao = "INSERT INTO inscricao (id_evento, id_empresa, nomeApresentacao)
-        VALUES ('$id_evento', '$id_empresa', '$nomeApresentacao')";
+      //inserindo dados da inscricao
+      $insertInscricao = "INSERT INTO inscricao (id_evento, id_empresa, nomeApresentacao)
+      VALUES ('$id_evento', '$id_empresa', '$nomeApresentacao')";
 
-        mysqli_query($conexao, $insertInscricao);
+      mysqli_query($conexao, $insertInscricao);
 
-        echo "ok";
-      }
+      echo "ok";
+    }
 
-      } catch (Exception $e) {
+  } catch (Exception $e) {
 
-          echo "Erro: ".$e->getMessage();
+    echo "Erro: ".$e->getMessage();
 
-        }
+  }
 
   // echo $insert;
 
-  }
+}
 
 $conexao->close();
 
@@ -92,4 +92,4 @@ $conexao->close();
 //     }
 // }
 // $conexao->close();
- ?>
+?>
