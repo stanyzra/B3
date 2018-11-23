@@ -234,21 +234,21 @@ ALTER TABLE `agenda`
 --
 ALTER TABLE `empresa`
   ADD CONSTRAINT `id_categoria_empresa_fk` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `pessoa_empresa_fk` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `pessoa_empresa_fk` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE CASCATE ON UPDATE NO ACTION;
 
 --
 -- Restrições para tabelas `inscricao`
 --
 ALTER TABLE `inscricao`
-  ADD CONSTRAINT `empresa_inscricao_fk` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_empresa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `empresa_inscricao_fk` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_empresa`) ON DELETE CASCATE ON UPDATE NO ACTION,
   ADD CONSTRAINT `evento_inscricao_fk` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Restrições para tabelas `pessoa_empresa`
 --
 ALTER TABLE `pessoa_empresa`
-  ADD CONSTRAINT `empresa_pessoa_empresa_fk` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_empresa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `pessoa_pessoa_empresa_fk` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `empresa_pessoa_empresa_fk` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_empresa`) ON DELETE CASCATE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `pessoa_pessoa_empresa_fk` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id_pessoa`) ON DELETE CASCATE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

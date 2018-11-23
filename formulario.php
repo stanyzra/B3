@@ -36,7 +36,7 @@ $idEvento = $conexao->query($sqlEvento);
   <div class="container">
     <form id="formCadastroPessoais" action="" method="post">
       <div id="textoCentral">
-        
+
         <h3 style="">Cadastro</h3>
         <h4>Nos informe seus dados</h4>
 
@@ -141,10 +141,12 @@ $idEvento = $conexao->query($sqlEvento);
 
     </form>
 
+<?php
+include("menu_principal.php");
+?>
+
     <script>
     $(document).ready(function() {
-
-      $("#dadosCadastrados").hide();
 
       $("#formCadastroPessoais").submit(function(event){
 
@@ -155,19 +157,24 @@ $idEvento = $conexao->query($sqlEvento);
           if (data == "ok") {
             alert("Cadastro realizado com sucesso!");
 
-            $(".limpar").each(function(){
-              $(this).val("");
-            });
+            // $(".limpar").each(function(){
+            //   $(this).val("");
+            // });
+
+            $("#formCadastroPessoais").hide();
+            $("#tabelaDados").fadeIn();
+            $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
+            $("#botaoCadastrar").fadeIn();
+            $("#botaoAtualizar").fadeIn();
+            $("#botaoAlterar").fadeIn();
+            $("#botaoExcluir").fadeIn();
+
           }else{
             alert("Há algo de errado. Por favor, corriga os campos.")
           }
         }); //fim do post
 
-        $("#formCadastroPessoais").hide();
 
-        $("#dadosCadastrados").fadeIn(function() {
-
-        });
 
       });
     });

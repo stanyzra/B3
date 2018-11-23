@@ -39,22 +39,30 @@ include("formulario.php");
 <button id="botaoCadastrar" class="w3-button w3-blue w3-section" type="submit">Novo cadastro</button>
 <a href="#" id="botaoCadastrar"></a>
 
+<button id="botaoAlterar" class="w3-button w3-purple w3-section" type="submit">Alterar dado</button>
+<a href="#" id="botaoAlterar"></a>
+
 <button id="botaoExcluir" class="w3-button w3-red w3-section" type="submit">Excluir cadastro</button>
 <a href="#" id="botaoExcluir"></a>
 
 <button id="botaoAtualizar" class="w3-button w3-black w3-section" type="submit">Atualizar lista</button>
 <a href="#" id="botaoAtualizar"></a>
+
 <div id="tabelaDados">
 
 </div>
 
 <script>
+
 $(document).ready(function() {
 
   $("#formCadastroPessoais").hide();
   $("#botaoCadastrar").hide();
+  $("#botaoAlterar").hide();
   $("#botaoAtualizar").hide();
   $("#botaoExcluir").hide();
+  $("#dadosCadastrados").hide();
+  $("#tabelaDados").hide();
 
   $("#botaoInicio").click(function(){
     $("#botaoInicio").hide();
@@ -63,25 +71,27 @@ $(document).ready(function() {
   });
 
   $("#botaoMenu").click(function(){
+    $("#tabelaDados").fadeIn();
     $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
     $("#botaoCadastrar").fadeIn();
     $("#botaoAtualizar").fadeIn();
+    $("#botaoAlterar").fadeIn();
     $("#botaoExcluir").fadeIn();
     $("#botaoMenu").hide();
     $("#botaoInicio").hide();
-    $("#dadosCadastrados").fadeIn();
   });
 
   $("#botaoAtualizar").click(function() {
     $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
   });
 
-  $("#botaoCadastrar").click(function(event) {
+  $("#botaoCadastrar").click(function() {
+    $("#tabelaDados").hide();
     $("#formCadastroPessoais").fadeIn();
     $("#botaoCadastrar").hide();
+    $("#botaoAlterar").hide();
     $("#botaoAtualizar").hide();
     $("#botaoExcluir").hide();
-
   });
 
 });
