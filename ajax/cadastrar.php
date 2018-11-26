@@ -79,17 +79,4 @@ if($conexao === false){
 }
 
 $conexao->close();
-
-// if ($conexao->connect_error) {
-//   echo "falha ao conectar ao banco: " . mysqli_connection_error();
-// }else {
-//     $sql="";
-//     if ($conexao->query($sql) === TRUE) {
-//       # code...
-//       echo "ok";
-//     }else {
-//       echo "erro ao inserir: ".$conexao->error;
-//     }
-// }
-// $conexao->close();
 ?>

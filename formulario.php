@@ -167,15 +167,11 @@ include("menu_principal.php");
             $("#botaoCadastrar").fadeIn();
             $("#botaoAtualizar").fadeIn();
             $("#botaoAlterar").fadeIn();
-            $("#botaoExcluir").fadeIn();
 
           }else{
             alert("Há algo de errado. Por favor, corriga os campos.")
           }
         }); //fim do post
-
-
-
       });
     });
   </script>

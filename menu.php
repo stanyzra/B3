@@ -25,28 +25,16 @@
 
 </style>
 
-<button id="botaoInicio" class="w3-button w3-black w3-half w3-section" type="submit">Comece Aqui</button>
-<a href="#" id="botaoInicio"></a>
-
-<button id="botaoMenu" class="w3-button w3-black w3-half w3-section" type="submit">Caso já tenha cadastrado algo</button>
-<a href="#" id="botaoMenu"></a>
-
+<button id="botaoInicio" class="w3-button w3-black w3-half w3-section botaoInicio" type="submit">Comece Aqui</button>
+<button id="botaoMenu" class="w3-button w3-black w3-half w3-section botaoMenu" type="submit">Caso já tenha cadastrado algo</button>
 
 <?php
 include("formulario.php");
 ?>
 
-<button id="botaoCadastrar" class="w3-button w3-blue w3-section" type="submit">Novo cadastro</button>
-<a href="#" id="botaoCadastrar"></a>
-
-<button id="botaoAlterar" class="w3-button w3-purple w3-section" type="submit">Alterar dado</button>
-<a href="#" id="botaoAlterar"></a>
-
-<button id="botaoExcluir" class="w3-button w3-red w3-section" type="submit">Excluir cadastro</button>
-<a href="#" id="botaoExcluir"></a>
-
-<button id="botaoAtualizar" class="w3-button w3-black w3-section" type="submit">Atualizar lista</button>
-<a href="#" id="botaoAtualizar"></a>
+<button id="botaoCadastrar" class="w3-button w3-blue w3-section botaoCadastrar" type="submit">Novo cadastro</button>
+<button id="botaoAlterar" class="w3-button w3-purple w3-section botaoAlterar" type="submit">Alterar dado</button>
+<button id="botaoAtualizar" class="w3-button w3-black w3-section botaoAtualizar" type="submit">Atualizar lista</button>
 
 <div id="tabelaDados">
 
@@ -60,7 +48,6 @@ $(document).ready(function() {
   $("#botaoCadastrar").hide();
   $("#botaoAlterar").hide();
   $("#botaoAtualizar").hide();
-  $("#botaoExcluir").hide();
   $("#dadosCadastrados").hide();
   $("#tabelaDados").hide();
 
@@ -76,7 +63,6 @@ $(document).ready(function() {
     $("#botaoCadastrar").fadeIn();
     $("#botaoAtualizar").fadeIn();
     $("#botaoAlterar").fadeIn();
-    $("#botaoExcluir").fadeIn();
     $("#botaoMenu").hide();
     $("#botaoInicio").hide();
   });
@@ -91,7 +77,6 @@ $(document).ready(function() {
     $("#botaoCadastrar").hide();
     $("#botaoAlterar").hide();
     $("#botaoAtualizar").hide();
-    $("#botaoExcluir").hide();
   });
 
 });

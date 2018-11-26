@@ -56,11 +56,13 @@ $idInscricao = $conexao->query($sqlInscricao);
           $evento = $idEvento->fetch_assoc();
 
           echo "<tr>";
-          echo "<td>{$empresa['nome']}</td>";
-          echo "<td>{$pessoa['nome']}</td>";
-          echo "<td>{$inscr['nomeApresentacao']}</td>";
-          echo "<td>{$evento['nome']}</td>";
-          echo "<td>{$inscr['data']}</td>";
+          echo "<td><a href='#' id='clickAlterar'>{$empresa['nome']}</td>";
+          echo "<td><a href='#' id='clickAlterar'>{$pessoa['nome']}</td>";
+          echo "<td><a href='#' id='clickAlterar'>{$inscr['nomeApresentacao']}</td>";
+          echo "<td><a href='#' id='clickAlterar'>{$evento['nome']}</td>";
+          echo "<td><a href='#' id='clickAlterar'>{$inscr['data']}</td>";
+          echo '<td><button type="button" class="w3-button w3-gray botaoExcluir" url="excluir.php?id={$id}">Excluir</button>
+          </td>';
           echo "</tr>";
         }
     } else {
