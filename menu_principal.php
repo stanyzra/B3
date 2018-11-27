@@ -16,7 +16,8 @@ $sqlCat = "SELECT id_categoria, tipo FROM categoria";
 $sqlInscricao = "SELECT id_inscricao, id_evento, id_empresa, data, nomeApresentacao
  FROM inscricao";
 
-
+$query = "SELECT * FROM inscricao";
+$result = mysqli_query($conexao,$query);
 
 // armazena em uma lista
 
@@ -31,6 +32,7 @@ $idInscricao = $conexao->query($sqlInscricao);
   <table border="1" id="dadosCadastrados">
 
     <?php
+    include("excluir.php");
     // for pra listar as opcoes/categorias
     if ($idInscricao->num_rows > 0) {
       echo "<tr>
@@ -40,6 +42,7 @@ $idInscricao = $conexao->query($sqlInscricao);
       <th>Evento</th>
       <th>Horário</th>
       </tr>";
+      $cont = 1;
         while($inscr = $idInscricao->fetch_assoc()) {
 
           $sqlEmpresa = "SELECT id_empresa, nome, cep, cidade, estado, emailEmpresa, id_categoria,
@@ -61,7 +64,7 @@ $idInscricao = $conexao->query($sqlInscricao);
           echo "<td><a href='#' id='clickAlterar'>{$inscr['nomeApresentacao']}</td>";
           echo "<td><a href='#' id='clickAlterar'>{$evento['nome']}</td>";
           echo "<td><a href='#' id='clickAlterar'>{$inscr['data']}</td>";
-          echo '<td><button type="button" class="w3-button w3-gray botaoExcluir" url="excluir.php?id={$id}">Excluir</button>
+          echo '<td><button type="button" id="del_<?php echo $id; ?>" class="w3-button w3-gray botaoExcluir"<php echo url="excluir.php?id={$id}">Excluir</button>
           </td>';
           echo "</tr>";
         }
@@ -70,6 +73,7 @@ $idInscricao = $conexao->query($sqlInscricao);
         <th>nenhum dado cadastrado</th>
         </tr>';
     }
+    $cont++;
     $conexao->close();
      ?>
               <thead>
@@ -81,3 +85,17 @@ $idInscricao = $conexao->query($sqlInscricao);
           </table>
 
 </div>
+
+<script>
+$(document).ready(function() {
+
+  $(".botaoExcluir").click(function(){
+    if(confirm("Confirmar exclusão?")){
+        // ajax para excluir
+    } else {
+    	alert("Cancelado.");
+    }
+
+  });
+});
+</script>

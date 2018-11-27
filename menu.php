@@ -35,6 +35,7 @@ include("formulario.php");
 <button id="botaoCadastrar" class="w3-button w3-blue w3-section botaoCadastrar" type="submit">Novo cadastro</button>
 <button id="botaoAlterar" class="w3-button w3-purple w3-section botaoAlterar" type="submit">Alterar dado</button>
 <button id="botaoAtualizar" class="w3-button w3-black w3-section botaoAtualizar" type="submit">Atualizar lista</button>
+<button id="botaoVoltar" class="w3-button w3-pink w3-section botaoVoltar" type="submit">Voltar</button>
 
 <div id="tabelaDados">
 
@@ -45,39 +46,53 @@ include("formulario.php");
 $(document).ready(function() {
 
   $("#formCadastroPessoais").hide();
-  $("#botaoCadastrar").hide();
-  $("#botaoAlterar").hide();
-  $("#botaoAtualizar").hide();
+  $(".botaoCadastrar").hide();
+  $(".botaoAlterar").hide();
+  $(".botaoAtualizar").hide();
+  $(".botaoVoltar").hide();
   $("#dadosCadastrados").hide();
   $("#tabelaDados").hide();
 
   $("#botaoInicio").click(function(){
-    $("#botaoInicio").hide();
-    $("#botaoMenu").hide();
+    $(".botaoInicio").hide();
+    $(".botaoMenu").hide();
     $("#formCadastroPessoais").fadeIn();
   });
 
   $("#botaoMenu").click(function(){
     $("#tabelaDados").fadeIn();
     $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
-    $("#botaoCadastrar").fadeIn();
-    $("#botaoAtualizar").fadeIn();
-    $("#botaoAlterar").fadeIn();
-    $("#botaoMenu").hide();
-    $("#botaoInicio").hide();
+    $(".botaoCadastrar").fadeIn();
+    $(".botaoAtualizar").fadeIn();
+    $(".botaoAlterar").fadeIn();
+    $(".botaoMenu").hide();
+    $(".botaoInicio").hide();
   });
 
-  $("#botaoAtualizar").click(function() {
+  $(".botaoAtualizar").click(function() {
     $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
   });
 
-  $("#botaoCadastrar").click(function() {
+  $(".botaoCadastrar").click(function() {
     $("#tabelaDados").hide();
     $("#formCadastroPessoais").fadeIn();
-    $("#botaoCadastrar").hide();
-    $("#botaoAlterar").hide();
-    $("#botaoAtualizar").hide();
+    $(".botaoCadastrar").hide();
+    $(".botaoAlterar").hide();
+    $(".botaoAtualizar").hide();
+    $(".botaoVoltar").fadeIn();
   });
 
+  $(".botaoVoltar").click(function() {
+    $("#formCadastroPessoais").hide();
+    $(".botaoVoltar").hide();
+    $("#tabelaDados").fadeIn();
+    $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
+    $(".botaoCadastrar").fadeIn();
+    $(".botaoAtualizar").fadeIn();
+    $(".botaoAlterar").fadeIn();
+  });
+  $(".botaoExcluir").click(function() {
+    alert("sad");
+  });
 });
 </script>

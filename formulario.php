@@ -135,7 +135,7 @@ $idEvento = $conexao->query($sqlEvento);
         <label for=""></label><br>
 
       </div>
-      <button id="botaoSalvar" name="submit" type="submit" class="w3-button w3-black w3-half w3-section" data-submit="salvando">Salvar</button>
+      <button id="botaoSalvar" name="submit" type="submit" class="w3-button w3-black w3-half w3-section botaoSalvar" data-submit="salvando">Salvar</button>
       <a href="#" id="botaoSalvar"></a>
 
 
@@ -164,9 +164,10 @@ include("menu_principal.php");
             $("#formCadastroPessoais").hide();
             $("#tabelaDados").fadeIn();
             $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
-            $("#botaoCadastrar").fadeIn();
-            $("#botaoAtualizar").fadeIn();
-            $("#botaoAlterar").fadeIn();
+            $(".botaoCadastrar").fadeIn();
+            $(".botaoAtualizar").fadeIn();
+            $(".botaoAlterar").fadeIn();
+            $(".botaoVoltar").hide();
 
           }else{
             alert("Há algo de errado. Por favor, corriga os campos.")

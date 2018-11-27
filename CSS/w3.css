@@ -1926,7 +1926,13 @@ a {
 	padding: 4px;
 	width: 210px;
 	float: left;
-	margin-left: 39%;
+	margin-left: 25%;
+}
+ #botaoVoltar{
+	 width: 210px;
+	 float: right;
+	 margin-right: 25%;
+	 padding: 4px;
 }
 #dadosCadastrados{
 	margin-left: auto;
