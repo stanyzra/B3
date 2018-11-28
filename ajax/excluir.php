@@ -8,24 +8,16 @@ if($conexao === false){
 }
 include "menu_principal.php";
 
-$id = $_POST['id'];
+$id = $_GET['id'];
 
-if($id > 0){
+if(isset($id)){
 
-  // Check record exists
-  $checkRecord = mysqli_query($conexao,"SELECT * FROM inscricao WHERE id=".$id);
-  $totalrows = mysqli_num_rows($checkRecord);
-
-  if($totalrows > 0){
-    // Delete record
     $query = "DELETE FROM inscricao WHERE id=".$id;
     mysqli_query($conexao,$query);
     echo 1;
-    exit;
-  }
-}
 
-echo 0;
-exit;
+}else {
+  echo 0;
+}
 $conexao->close();
 ?>

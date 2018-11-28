@@ -46,6 +46,7 @@ $idInscricao = $conexao->query($sqlInscricao);
       $cont = 1;
         while($inscr = $idInscricao->fetch_assoc()) {
 
+
           echo "$id";
           $sqlEmpresa = "SELECT id_empresa, nome, cep, cidade, estado, emailEmpresa, id_categoria,
           id_pessoa FROM empresa WHERE id_empresa = {$inscr['id_empresa']}";
@@ -68,7 +69,7 @@ $idInscricao = $conexao->query($sqlInscricao);
           echo "<td><a href='#' id='clickAlterar'>{$evento['nome']}</td>";
           echo "<td><a href='#' id='clickAlterar'>{$inscr['data']}</td>";
           echo '<td>
-          <button type="button" class="w3-button w3-gray botaoExcluir">Excluir</button>
+          <button type="button" class="w3-button w3-gray botaoExcluir" id_inscricao="'.$inscr['id_inscricao'].'">Excluir</button>
           </td>';
           echo "</tr>";
           $cont++;
@@ -96,18 +97,13 @@ $(document).ready(function() {
 
   $(".botaoExcluir").click(function(){
   var el = this;
-  var id = this.id;
-  var splitid = id.split("_");
-
-  // Delete id
-     var deleteid = splitid[1];
+  var id = $(this).attr("id_inscricao");
 
     if(confirm("Confirmar exclusão?")){
-        // ajax para excluir
+      
         $.ajax({
-     url: 'excluir.php',
-     type: 'POST',
-     data: { id:deleteid },
+     url: 'ajax/excluir.php?id='+id,
+     type: 'GET',
      success: function(response){
        if(response == 1){
       	 // Remove row from HTML Table
