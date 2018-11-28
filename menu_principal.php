@@ -36,6 +36,7 @@ $idInscricao = $conexao->query($sqlInscricao);
     // for pra listar as opcoes/categorias
     if ($idInscricao->num_rows > 0) {
       echo "<tr>
+      <th>ID</th>
       <th>Nome da empresa</th>
       <th>Nome do empresário</th>
       <th>Nome da Apresentação</th>
@@ -45,6 +46,7 @@ $idInscricao = $conexao->query($sqlInscricao);
       $cont = 1;
         while($inscr = $idInscricao->fetch_assoc()) {
 
+          echo "$id";
           $sqlEmpresa = "SELECT id_empresa, nome, cep, cidade, estado, emailEmpresa, id_categoria,
           id_pessoa FROM empresa WHERE id_empresa = {$inscr['id_empresa']}";
           $idEmpresa = $conexao->query($sqlEmpresa);
@@ -59,21 +61,24 @@ $idInscricao = $conexao->query($sqlInscricao);
           $evento = $idEvento->fetch_assoc();
 
           echo "<tr>";
+          echo "<td><a href='#' id='clickAlterar'>{$inscr['id_inscricao']}</td>";
           echo "<td><a href='#' id='clickAlterar'>{$empresa['nome']}</td>";
           echo "<td><a href='#' id='clickAlterar'>{$pessoa['nome']}</td>";
           echo "<td><a href='#' id='clickAlterar'>{$inscr['nomeApresentacao']}</td>";
           echo "<td><a href='#' id='clickAlterar'>{$evento['nome']}</td>";
           echo "<td><a href='#' id='clickAlterar'>{$inscr['data']}</td>";
-          echo '<td><button type="button" id="del_<?php echo $id; ?>" class="w3-button w3-gray botaoExcluir"<php echo url="excluir.php?id={$id}">Excluir</button>
+          echo '<td>
+          <button type="button" class="w3-button w3-gray botaoExcluir">Excluir</button>
           </td>';
           echo "</tr>";
+          $cont++;
+
         }
     } else {
         echo '<tr>
         <th>nenhum dado cadastrado</th>
         </tr>';
     }
-    $cont++;
     $conexao->close();
      ?>
               <thead>
@@ -90,8 +95,31 @@ $idInscricao = $conexao->query($sqlInscricao);
 $(document).ready(function() {
 
   $(".botaoExcluir").click(function(){
+  var el = this;
+  var id = this.id;
+  var splitid = id.split("_");
+
+  // Delete id
+     var deleteid = splitid[1];
+
     if(confirm("Confirmar exclusão?")){
         // ajax para excluir
+        $.ajax({
+     url: 'excluir.php',
+     type: 'POST',
+     data: { id:deleteid },
+     success: function(response){
+       if(response == 1){
+      	 // Remove row from HTML Table
+      	 $(el).closest('tr').fadeOut(800,function(){
+      	    $(this).remove();
+      	 });
+            }else{
+      	 alert('Invalid ID.');
+            }
+
+          }
+         });
     } else {
     	alert("Cancelado.");
     }

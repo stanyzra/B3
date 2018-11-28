@@ -6,15 +6,26 @@ if($conexao === false){
 
   die("ERROR: não foi possível conectar o bando de dados:  " . $conexao->connect_error);
 }
-include "config.php";
+include "menu_principal.php";
 
 $id = $_POST['id'];
 
-$sqlInsc = "SELECT id_inscricao FROM inscricao";
+if($id > 0){
 
-$idInsc = $conexao->query($conexao, $sqlInsc);
+  // Check record exists
+  $checkRecord = mysqli_query($conexao,"SELECT * FROM inscricao WHERE id=".$id);
+  $totalrows = mysqli_num_rows($checkRecord);
 
-$sqlDrop = "DROP TABLE inscricao";
+  if($totalrows > 0){
+    // Delete record
+    $query = "DELETE FROM inscricao WHERE id=".$id;
+    mysqli_query($conexao,$query);
+    echo 1;
+    exit;
+  }
+}
 
+echo 0;
+exit;
 $conexao->close();
 ?>

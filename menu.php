@@ -33,7 +33,6 @@ include("formulario.php");
 ?>
 
 <button id="botaoCadastrar" class="w3-button w3-blue w3-section botaoCadastrar" type="submit">Novo cadastro</button>
-<button id="botaoAlterar" class="w3-button w3-purple w3-section botaoAlterar" type="submit">Alterar dado</button>
 <button id="botaoAtualizar" class="w3-button w3-black w3-section botaoAtualizar" type="submit">Atualizar lista</button>
 <button id="botaoVoltar" class="w3-button w3-pink w3-section botaoVoltar" type="submit">Voltar</button>
 
@@ -47,7 +46,6 @@ $(document).ready(function() {
 
   $("#formCadastroPessoais").hide();
   $(".botaoCadastrar").hide();
-  $(".botaoAlterar").hide();
   $(".botaoAtualizar").hide();
   $(".botaoVoltar").hide();
   $("#dadosCadastrados").hide();
@@ -64,7 +62,6 @@ $(document).ready(function() {
     $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
     $(".botaoCadastrar").fadeIn();
     $(".botaoAtualizar").fadeIn();
-    $(".botaoAlterar").fadeIn();
     $(".botaoMenu").hide();
     $(".botaoInicio").hide();
   });
@@ -77,7 +74,6 @@ $(document).ready(function() {
     $("#tabelaDados").hide();
     $("#formCadastroPessoais").fadeIn();
     $(".botaoCadastrar").hide();
-    $(".botaoAlterar").hide();
     $(".botaoAtualizar").hide();
     $(".botaoVoltar").fadeIn();
   });
@@ -89,10 +85,6 @@ $(document).ready(function() {
     $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
     $(".botaoCadastrar").fadeIn();
     $(".botaoAtualizar").fadeIn();
-    $(".botaoAlterar").fadeIn();
-  });
-  $(".botaoExcluir").click(function() {
-    alert("sad");
   });
 });
 </script>

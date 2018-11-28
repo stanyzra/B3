@@ -166,7 +166,6 @@ include("menu_principal.php");
             $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
             $(".botaoCadastrar").fadeIn();
             $(".botaoAtualizar").fadeIn();
-            $(".botaoAlterar").fadeIn();
             $(".botaoVoltar").hide();
 
           }else{
