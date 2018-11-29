@@ -59,12 +59,12 @@ $idInscricao = $conexao->query($sqlInscricao);
           $evento = $idEvento->fetch_assoc();
 
           echo "<tr>";
-          echo "<td><a href='#' id='clickAlterar'>{$inscr['id_inscricao']}</td>";
-          echo "<td><a href='#' id='clickAlterar'>{$empresa['nome']}</td>";
-          echo "<td><a href='#' id='clickAlterar'>{$pessoa['nome']}</td>";
-          echo "<td><a href='#' id='clickAlterar'>{$inscr['nomeApresentacao']}</td>";
-          echo "<td><a href='#' id='clickAlterar'>{$evento['nome']}</td>";
-          echo "<td><a href='#' id='clickAlterar'>{$inscr['data']}</td>";
+          echo "<td>{$inscr['id_inscricao']}</a></td>";
+          echo "<td><a href='' class='alterarEmpresa' nomeEmpresa={$empresa['nome']}>{$empresa['nome']}</td>";
+          echo "<td><a href='' class='alterarEmpresario' nomeEmpresario={$pessoa['nome']}>{$pessoa['nome']}</td>";
+          echo "<td><a href='' class='alterarApresentacao' apresentacao={$inscr['nomeApresentacao']}>{$inscr['nomeApresentacao']}</td>";
+          echo "<td><a href='' class='alterarEvento' nomeEvento={$evento['nome']}>{$evento['nome']}</td>";
+          echo "<td><a href='' class='alterarData' dataEvento={$inscr['data']}>{$inscr['data']}</td>";
           echo '<td>
           <button type="button" class="w3-button w3-gray botaoExcluir" id_inscricao="'.$inscr['id_inscricao'].'">Excluir</button>
           </td>';
@@ -117,6 +117,43 @@ $(document).ready(function() {
     	alert("Cancelado.");
     }
 
+  });
+  $(".alterarEmpresa").click(function(){
+    event.preventDefault();
+    var person = prompt("Informe o novo dado", "");
+    var nome = $(this).attr("nomeEmpresa");
+    if (person != null) {
+      $.ajax({
+        url: 'ajax/alterar.php?nome_empresa='+nome,
+        type: 'GET',
+        success: function(response){
+          if (response == 1) {
+            alert("Cadastro alterado com sucesso.");
+          }else {
+            alert("Algo deu errado.");
+          }
+        }
+      });
+    }
+  });
+
+  $(".alterarData").click(function(){
+    event.preventDefault();
+    var person = prompt("Informe o novo dado", "");
+    var data = $(this).attr("dataEvento");
+    if (person != null) {
+      $.ajax({
+        url: 'ajax/alterar.php?data='+data,
+        type: 'GET',
+        success: function(response){
+          if (response == 1) {
+            alert("Cadastro alterado com sucesso.");
+          }else {
+            alert("Algo deu errado.");
+          }
+        }
+      });
+    }
   });
 });
 </script>
