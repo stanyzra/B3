@@ -1945,9 +1945,11 @@ a {
 	border-collapse: collapse;
 	width: 100%;
 }
-
+ td:hover{
+	background-color: #e0e0eb
+}
 th, td {
-	text-align: left;
+	text-align: center;
 	padding: 8px;
 }
 

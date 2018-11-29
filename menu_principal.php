@@ -60,11 +60,11 @@ $idInscricao = $conexao->query($sqlInscricao);
 
           echo "<tr>";
           echo "<td>{$inscr['id_inscricao']}</a></td>";
-          echo "<td><a href='' class='alterarEmpresa' nomeEmpresa={$empresa['nome']}>{$empresa['nome']}</td>";
-          echo "<td><a href='' class='alterarEmpresario' nomeEmpresario={$pessoa['nome']}>{$pessoa['nome']}</td>";
-          echo "<td><a href='' class='alterarApresentacao' apresentacao={$inscr['nomeApresentacao']}>{$inscr['nomeApresentacao']}</td>";
-          echo "<td><a href='' class='alterarEvento' nomeEvento={$evento['nome']}>{$evento['nome']}</td>";
-          echo "<td><a href='' class='alterarData' dataEvento={$inscr['data']}>{$inscr['data']}</td>";
+          echo '<td id_entidade="id_empresa" entidade_id="'.$empresa['id_empresa'].'" entidade="empresa" entidade_campo="nome">'.$empresa['nome'].'</td>';
+          echo '<td id_entidade="id_pessoa" entidade_id="'.$pessoa['id_pessoa'].'" entidade="pessoa" entidade_campo="nome">'.$pessoa['nome'].'</td>';
+          echo '<td id_entidade="id_inscricao" entidade_id="'.$inscr['id_inscricao'].'" entidade="inscricao" entidade_campo="nomeApresentacao">'.$inscr['nomeApresentacao'].'</td>';
+          echo '<td id_entidade="id_evento" entidade_id="'.$evento['id_evento'].'" entidade="evento" entidade_campo="nome">'.$evento['nome'].'</td>';
+          echo '<td id_entidade="id_inscricao" entidade_id="'.$inscr['id_inscricao'].'" entidade="inscricao" entidade_campo="data">'.$inscr['data'].'</td>';
           echo '<td>
           <button type="button" class="w3-button w3-gray botaoExcluir" id_inscricao="'.$inscr['id_inscricao'].'">Excluir</button>
           </td>';
@@ -97,7 +97,6 @@ $(document).ready(function() {
   var id = $(this).attr("id_inscricao");
 
     if(confirm("Confirmar exclusão?")){
-
         $.ajax({
      url: 'ajax/excluir.php?id='+id,
      type: 'GET',
@@ -118,35 +117,22 @@ $(document).ready(function() {
     }
 
   });
-  $(".alterarEmpresa").click(function(){
-    event.preventDefault();
-    var person = prompt("Informe o novo dado", "");
-    var nome = $(this).attr("nomeEmpresa");
-    if (person != null) {
-      $.ajax({
-        url: 'ajax/alterar.php?nome_empresa='+nome,
-        type: 'GET',
-        success: function(response){
-          if (response == 1) {
-            alert("Cadastro alterado com sucesso.");
-          }else {
-            alert("Algo deu errado.");
-          }
-        }
-      });
-    }
-  });
 
-  $(".alterarData").click(function(){
+  $("td").dblclick(function(){
     event.preventDefault();
-    var person = prompt("Informe o novo dado", "");
-    var data = $(this).attr("dataEvento");
-    if (person != null) {
+    var valor = prompt("Informe o novo dado", "");
+    var id = $(this).attr("entidade_id");
+    var entidade = $(this).attr("entidade");
+    var campo = $(this).attr("entidade_campo");
+    var entidade_id = $(this).attr("id_entidade");
+
+    if (valor != null){
       $.ajax({
-        url: 'ajax/alterar.php?data='+data,
+        url: 'ajax/alterar.php',
+        data: {id: id, valor: valor, entidade: entidade, campo: campo, entidade_id: entidade_id},
         type: 'GET',
         success: function(response){
-          if (response == 1) {
+          if (response == "ok") {
             alert("Cadastro alterado com sucesso.");
           }else {
             alert("Algo deu errado.");

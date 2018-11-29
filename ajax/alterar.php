@@ -7,26 +7,20 @@ if($conexao === false){
   die("ERROR: não foi possível conectar o bando de dados:  " . $conexao->connect_error);
 }
 
-// $data = $_GET['data'];
-$nomeEmpresa = $_GET["nome_empresa"];
+$entidade = $_GET['entidade'];
+$id = $_GET['id'];
+$valor = $_GET['valor'];
+$campo = $_GET['campo'];
+$entidade_id = $_GET['entidade_id'];
 
-// if (isset($data)) {
-//
-//   $query = "UPDATE inscricao SET ('$data') WHERE data=".$data;
-//   mysqli_query($conexao, $query);
-//   echo 1;
-//
-// }else {
-//   echo 0;
-// }
-if (isset($nomeEmpresa)) {
+if (isset($id)) {
 
-  $query = "UPDATE empresa SET ('$nomeEmpresa') WHERE nome=".$nomeEmpresa;
-  mysqli_query($conexao, $query);
-  echo 1;
+  $sql = "UPDATE $entidade SET $campo = '$valor' WHERE $entidade_id = $id";
+  mysqli_query($conexao, $sql);
+  echo "ok";
 
 }else {
-  echo 0;
+  echo "erro";
 }
 $conexao->close();
 ?>
