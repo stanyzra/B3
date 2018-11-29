@@ -32,7 +32,6 @@ $idInscricao = $conexao->query($sqlInscricao);
   <table border="1" id="dadosCadastrados">
 
     <?php
-    include("excluir.php");
     // for pra listar as opcoes/categorias
     if ($idInscricao->num_rows > 0) {
       echo "<tr>
@@ -46,8 +45,6 @@ $idInscricao = $conexao->query($sqlInscricao);
       $cont = 1;
         while($inscr = $idInscricao->fetch_assoc()) {
 
-
-          echo "$id";
           $sqlEmpresa = "SELECT id_empresa, nome, cep, cidade, estado, emailEmpresa, id_categoria,
           id_pessoa FROM empresa WHERE id_empresa = {$inscr['id_empresa']}";
           $idEmpresa = $conexao->query($sqlEmpresa);
@@ -100,14 +97,14 @@ $(document).ready(function() {
   var id = $(this).attr("id_inscricao");
 
     if(confirm("Confirmar exclusão?")){
-      
+
         $.ajax({
      url: 'ajax/excluir.php?id='+id,
      type: 'GET',
      success: function(response){
        if(response == 1){
       	 // Remove row from HTML Table
-      	 $(el).closest('tr').fadeOut(800,function(){
+      	 $(el).closest('tr').fadeOut(200,function(){
       	    $(this).remove();
       	 });
             }else{
