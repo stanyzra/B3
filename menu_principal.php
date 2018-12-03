@@ -54,7 +54,7 @@ $idInscricao = $conexao->query($sqlInscricao);
           $idPessoa = $conexao->query($sqlPessoa);
           $pessoa = $idPessoa->fetch_assoc();
 
-          $sqlEvento = "SELECT id_evento, nome, dataEvento FROM evento";
+          $sqlEvento = "SELECT id_evento, nome, dataEvento FROM evento WHERE id_evento = {$inscr['id_evento']}";
           $idEvento = $conexao->query($sqlEvento);
           $evento = $idEvento->fetch_assoc();
 
@@ -66,7 +66,7 @@ $idInscricao = $conexao->query($sqlInscricao);
           echo '<td id_entidade="id_evento" entidade_id="'.$evento['id_evento'].'" entidade="evento" entidade_campo="nome">'.$evento['nome'].'</td>';
           echo '<td id_entidade="id_inscricao" entidade_id="'.$inscr['id_inscricao'].'" entidade="inscricao" entidade_campo="data">'.$inscr['data'].'</td>';
           echo '<td>
-          <button type="button" class="w3-button w3-gray botaoExcluir" id_inscricao="'.$inscr['id_inscricao'].'">Excluir</button>
+          <button type="button" class="w3-button w3-red botaoExcluir" id_inscricao="'.$inscr['id_inscricao'].'">Excluir</button>
           </td>';
           echo "</tr>";
           $cont++;
@@ -90,6 +90,7 @@ $idInscricao = $conexao->query($sqlInscricao);
 </div>
 
 <script>
+
 $(document).ready(function() {
 
   $(".botaoExcluir").click(function(){
@@ -119,7 +120,6 @@ $(document).ready(function() {
   });
 
   $("td").dblclick(function(){
-    event.preventDefault();
     var valor = prompt("Informe o novo dado", "");
     var id = $(this).attr("entidade_id");
     var entidade = $(this).attr("entidade");
@@ -134,6 +134,7 @@ $(document).ready(function() {
         success: function(response){
           if (response == "ok") {
             alert("Cadastro alterado com sucesso.");
+            $("#tabelaDados").load("http://localhost/BE3/menu_principal.php");
           }else {
             alert("Algo deu errado.");
           }
